@@ -1,0 +1,18 @@
+Logstash download 받기
+https://www.elastic.co/kr/downloads/logstash
+https://artifacts.elastic.co/downloads/logstash/logstash-7.12.0-darwin-x86_64.tar.gz
+
+역시 로그스태시도 OSS 버전이 있습니다. 위 링크는 기본 x-pack basic 라이선스 버전 입니다.
+OSS 버전 다운로드는 아래에서 가능 합니다.
+https://www.elastic.co/downloads/logstash-oss
+
+$ wget https://artifacts.elastic.co/downloads/logstash/logstash-7.12.0-darwin-x86_64.tar.gz
+$ tar -xvzf logstash-7.12.0-darwin-x86_64.tar.gz
+
+기본적인 stdin 과 stdout 을 해보고 input file 과 output elasticsearch 를 해보겠습니다.
+$ bin/logstash -e 'input { stdin { } } output { stdout {} }'
+
+$ bin/logstash -f config/logstash-eslog.conf
+
+색인 정보를 확인해 보도록 하겠습니다.
+http://localhost:9200/logstash*/_search?pretty=true

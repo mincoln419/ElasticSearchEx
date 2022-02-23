@@ -1,0 +1,41 @@
+$ mkdir docker
+$ docker pull docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+이미지를 다운로드 받습니다.
+
+$ docker images
+REPOSITORY                                                TAG     IMAGE ID         CREATED         SIZE
+docker.elastic.co/elasticsearch/elasticsearch 7.12.0  9337ed510a0c  4 weeks ago     830MB
+
+$ docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" 9337ed510a0c
+or
+$ docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+
+$ docker stop/kill CONTAINER-ID
+
+Single Node 구성
+$ vi config/elasticsearch.yml
+cluster.name: fastcampus
+node.name: single-node
+discovery.type: single-node
+
+$ bin/elasticsearch -d -p PID
+
+http://localhost:9200/_cat/nodes?format=json&pretty
+
+이렇게 확인 한 후 별도 설정 없이 elasticsearch 를 하나 더 실행 시켜 보겠습니다.
+$ bin/elasticsearch 
+
+% jenv local 11
+% echo $JAVA_HOME
+% ES_JAVA_HOME=$JAVA_HOME bin/elasticsearch
+
+$ docker-compose -f docker-compose-single-node.yml up
+or
+$ docker-compose -f docker-compose-single-node.yml up -d
+
+프로세스 확인 하기
+$ docker ps
+
+$ docker-compose -f docker-compose-single-node.yml down
+
+

@@ -1,0 +1,13 @@
+기본 계정 home 아래 workspace 를 생성 하겠습니다.
+mkdir -p Workspace/apps
+mkdir -p Workspace/github
+mkdir -p Workspace/github/apache
+mkdir -p Workspace/github/elastic
+mkdir -p Workspace/github/howookjeong
+mkdir -p fastcampus/download
+mkdir -p fastcampus/training/ch1
+mkdir -p fastcampus/training/ch3/docker
+mkdir -p fastcampus/training/ch3/cluster
+mkdir -p fastcampus/training/ch3/standalone
+mkdir -p fastcampus/ch1
+

@@ -1,0 +1,9 @@
+다운로드를 받아 보겠습니다.
+https://www.elastic.co/downloads/beats/filebeat
+https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.0-darwin-x86_64.tar.gz
+$ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.0-darwin-x86_64.tar.gz
+$ tar -xvzf filebeat-7.12.0-darwin-x86_64.tar.gz
+
+$ ./filebeat -c filebeat-eslog.yml
+http://localhost:9200/filebeat-es-*/_search?pretty=true
+
