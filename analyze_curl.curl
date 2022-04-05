@@ -1,0 +1,53 @@
+형태소 분석 curl
+
+GET _analyze
+{
+    "analyzer": "standard",
+    "text": "Quick Brown Foxes"
+}
+
+GET _analyze 
+{
+    "tokenizer": {
+        "type": "nori_tokenizer",
+        "decompound_mode": "mixed",
+        "discard_puncutuation": "true"
+    },
+    "text": "fastcampus 에서 elasticsearch? 수업을 들었습니다",
+    "explain": true
+}
+
+
+GET _analyze 
+{
+    "tokenizer": {
+        "type": "nori_tokenizer",
+        "decompound_mode": "mixed",
+        "discard_puncutuation": "true",
+        "user_dictionary_rules":[
+          "fastcampus",
+          "elasticsearch elastic search",
+          "수업"
+          ]
+        
+    },
+    "text": "fastcampus 에서 elasticsearch 수 업 을 들었습니다",
+    "explain": true
+}
+
+GET _analyze 
+{
+    "tokenizer": {
+        "type": "nori_tokenizer",
+        "decompound_mode": "mixed",
+        "discard_puncutuation": "true",
+        "user_dictionary_rules":["fastcampus",
+          "elasticsearch elastic search"]
+    },
+    "filter": {
+        "type":"nori_part_of_speech",
+        "stoptags":["VV"]
+      }, 
+      "text": "fastcampus 에서 elasticsearch 수 업 을 들었습니다.",  
+      "explain": false
+}
